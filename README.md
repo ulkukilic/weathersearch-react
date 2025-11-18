@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# Weather Search React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A weather search application developed with React, using the OpenWeatherMap API.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- 🌍 Search weather by city name
+- 🌡️ Real-time temperature display (Celsius)
+- ⌨️ Search with Enter key support
+- 📱 Responsive design (Bootstrap)
+- 🇹🇷 Turkish language support
 
-### `npm start`
+## Technologies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React 18
+- Bootstrap 5
+- OpenWeatherMap API
+- React (useState, useEffect)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Clone the project:
+```bash
+cd weathersearch-react
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install dependencies:
+```bash
+npm install
+```
 
-### `npm run build`
+3. Start the project:
+```bash
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The application will open at [http://localhost:3000](http://localhost:3000).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+weathersearch-react/
+├── src/
+│   ├── components/
+│   │   └── weather/
+│   │       ├── Weather.jsx          # Main weather display component
+│   │       └── WeatherSearch.jsx    # API calling component
+│   ├── App.js                       # Main application component
+│   └── index.js                     
+├── public/
+└── package.json
+```
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Enter the city name in the search box (e.g., "Istanbul", "Ankara")
+2. Click the "Search" button or press Enter key
+3. Weather information will be displayed:
+   - City name
+   - Current temperature
+   - Weather description
+   - Weather icon
+   - Date/time
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## API
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The project uses [OpenWeatherMap API](https://openweathermap.org/api).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**API Endpoint:** `https://api.openweathermap.org/data/2.5/weather`
 
-## Learn More
+**Parameters:**
+- `q`: City name
+- `appid`: API key
+- `units`: metric (for Celsius)
+- `lang`: tr (for Turkish)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Development
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To develop the project:
 
-### Code Splitting
+```bash
+npm start    # Starts the development server
+npm test     # Runs the tests
+npm run build # Creates production build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Components
 
-### Analyzing the Bundle Size
+### Weather.jsx
+- Renders the user interface
+- Manages search input and button
+- Displays weather data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### WeatherSearch.jsx
+- Sends requests to OpenWeatherMap API
+- Fetches weather data
+- Passes data to parent component
