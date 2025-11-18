@@ -66,23 +66,6 @@ weathersearch-react/
 
 The project uses [OpenWeatherMap API](https://openweathermap.org/api).
 
-**API Endpoint:** `https://api.openweathermap.org/data/2.5/weather`
-
-**Parameters:**
-- `q`: City name
-- `appid`: API key
-- `units`: metric (for Celsius)
-- `lang`: tr (for Turkish)
-
-## Development
-
-To develop the project:
-
-```bash
-npm start    # Starts the development server
-npm test     # Runs the tests
-npm run build # Creates production build
-```
 
 ## Components
 
