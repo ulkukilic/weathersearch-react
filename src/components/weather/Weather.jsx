@@ -1,4 +1,19 @@
-export default function Weather({ weatherData }) {
+import { useState } from 'react';
+
+export default function Weather({ weatherData, onSearch }) {
+    const [cityInput, setCityInput] = useState('');
+
+const handleSearch = () => {
+    if (cityInput.trim()) {
+        onSearch(cityInput);
+    }
+};
+
+   const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+        handleSearch();
+    }
+};
 
     return (
         <>
@@ -8,8 +23,13 @@ export default function Weather({ weatherData }) {
                     type="text"
                     placeholder="Şehir adı girin ..."
                     className="form-control"
+                    value={cityInput}
+                    onChange={(e) => setCityInput(e.target.value)}
+                    onKeyPress={handleKeyPress}
                 />
-                <button id="searchBtn" className="btn btn-primary">Ara</button>
+                <button id="searchBtn" className="btn btn-primary" onClick={handleSearch}>
+                    Ara
+                </button>
             </section>
 
             <section 
@@ -21,7 +41,7 @@ export default function Weather({ weatherData }) {
                         <div className="d-flex justify-content-center align-items-center mb-3">
                             <img
                                 id="weatherIcon"
-                                src={weatherData.condition?.icon || ''}
+                                src={`https://openweathermap.org/img/wn/${weatherData.weather?.[0]?.icon}@2x.png`}
                                 alt="Hava durumu ikonu"
                                 className="img-fluid"
                                 style={{ width: "80px", height: "80px" }}
@@ -30,13 +50,13 @@ export default function Weather({ weatherData }) {
 
                         <h2 id="cityName" className="h4 mb-2">{weatherData.name}</h2>
                         <p id="temperature" className="display-4 fw-bold mb-2">
-                            {weatherData.temp_c}°C
+                            {weatherData.main?.temp}°C
                         </p>
                         <p id="conditionText" className="text-muted">
-                            {weatherData.condition?.text}
+                            {weatherData.weather?.[0]?.description}
                         </p>
                         <p id="dateTime" className="text-muted small mt-2">
-                            {weatherData.localtime}
+                            {new Date().toLocaleString('tr-TR')}
                         </p>
                     </>
                 )}
